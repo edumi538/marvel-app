@@ -1,26 +1,24 @@
-import React from 'react';
-import {StatusBar, Platform} from 'react-native';
-import Home from './src/Screen/Home';
-import Description from './src/Screen/Description';
-// import Description from './src/Screen/Description';
-import {createDrawerNavigator} from 'react-navigation';
-
+import React, {Component} from 'react';
+import {View, Text} from 'react-native';
+import {Home, Description} from './src/Screen/screens';
+import {NavigationNativeContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 if (__DEV__) {
   import('./config/Reactotron');
 }
+class App extends Component {
+  render() {
+    const Tab = createBottomTabNavigator();
 
-export default createDrawerNavigator(
-  {
-    Home: {
-      screen: Home,
-    },
-    Description: {
-      screen: Description,
-    },
-  },
-  {
-    cardStyle: {
-      paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
-    },
-  },
-);
+    return (
+      <NavigationNativeContainer>
+        <Tab.Navigator initialRouteName="Home">
+          <Tab.Screen name="Home" component={Home} />
+          <Tab.Screen name="Description" component={Description} />
+        </Tab.Navigator>
+      </NavigationNativeContainer>
+    );
+  }
+}
+
+export default App;
