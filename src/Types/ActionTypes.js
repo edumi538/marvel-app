@@ -1,4 +1,3 @@
-export const GET_TODO_SUCCESS = 'GET_TODO_SUCCESS';
-export const GET_TODO_FAILURE = 'GET_TODO_FAILURE';
-export const GET_TODO_STARTED = 'GET_TODO_STARTED';
-    
+// Consume Api
+export const PERSON_ON_FETCHING = 'PERSON_ON_FETCHING';
+export const PERSON_ON_SUCCESS = 'PERSON_ON_SUCCESS';

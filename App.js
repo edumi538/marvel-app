@@ -1,22 +1,23 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
-import {Home, Description} from './src/Screen/screens';
-import {NavigationNativeContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {PersistGate} from 'redux-persist/integration/react';
+import {Provider, useSelector} from 'react-redux';
+import {ComponentHome} from './src/Components/homeText';
+import {store, persistor} from './src/Store/index';
+import Routes from './src/Routes/routes';
+// import {store} from './src/Actions/screenActions/HomeTItleAction';
+
 if (__DEV__) {
-  import('./config/Reactotron');
+  import('./src/config/Reactotron');
 }
 class App extends Component {
   render() {
-    const Tab = createBottomTabNavigator();
-
     return (
-      <NavigationNativeContainer>
-        <Tab.Navigator initialRouteName="Home">
-          <Tab.Screen name="Home" component={Home} />
-          <Tab.Screen name="Description" component={Description} />
-        </Tab.Navigator>
-      </NavigationNativeContainer>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <Routes />
+        </PersistGate>
+      </Provider>
     );
   }
 }
