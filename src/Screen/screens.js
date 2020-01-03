@@ -2,13 +2,20 @@ import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 import {ComponentTestApi} from '../Components/homeText';
 import {ComponenteDescription} from '../Components/descriptionText';
+import {LoginComp} from '../Components/LoginComponent';
 
-export class Home extends Component {
+export class LoginScreen extends Component {
   render() {
-    return <ComponentTestApi />;
+    return <LoginComp />;
   }
 }
-export class Description extends Component {
+export class HomeScreen extends Component {
+  render() {
+    // return <ComponentTestApi />;
+    return null;
+  }
+}
+export class DescriptionScreen extends Component {
   render() {
     return <ComponenteDescription />;
   }

@@ -19,7 +19,6 @@ const hash = md5.create();
 hash.update(timestamp + PRIVATE_KEY + PUBLIC_KEY);
 
 export const AuthApi = () => async dispatch => {
-  console.tron.log('teste');
   try {
     const response = await Axios.get(
       `https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`,
