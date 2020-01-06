@@ -1,6 +1,6 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import {DescriptionAction} from '../Actions/screenActions/DescriptionTitleAction';
+import {DescriptionAction} from '../actions/screenActions/DescriptionTitleAction';
 
 export const ComponenteDescription = () => {
   return (
