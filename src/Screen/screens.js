@@ -1,40 +1,63 @@
 import React, {Component, useEffect} from 'react';
-import {View, Text, FlatList} from 'react-native';
-import {ComponenteDescription} from '../Components/descriptionText';
-import {ComponentTestApi} from '../Components/listaPersonagens';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Image,
+  ImageBackground,
+  Button,
+} from 'react-native';
+import {StackActions} from '@react-navigation/routers';
 import {useDispatch, useSelector} from 'react-redux';
-import {AuthApi} from '../actions/screenActions/HomeTItleAction';
-import {Lista} from '../Components/listaPersonagens';
+import {AuthApi} from '../Actions/screenActions/HomeTItleAction';
 
-export const HomeScreen = () => {
+export const HomeScreen = ({navigation}) => {
   const dispatch = useDispatch();
-  const [personagens] = useSelector(state => state.chars);
+  const arrayPersonagens = useSelector(state => state.HomeReducer.chars);
 
   useEffect(() => {
     dispatch(AuthApi());
-  }, []);
+  }, [dispatch]);
 
-  _renderItem = ({item}) => {
+  const _renderItem = ({item}) => {
     return (
       <TouchableOpacity
-        onPress={() => this._onItemPress(item)}
+        onPress={() => {
+          navigation.navigate('DetailScreen', {
+            heroes: item,
+          });
+        }}
         style={{flexDirection: 'row', padding: 10, alignItems: 'center'}}>
         <Image
-          style={{height: 50, width: 50, borderRadius: 25}}
-          source={{uri: `${item.thumbnail.path}.${item.thumbnail.extension}`}}
+          style={{height: 70, width: 70, borderRadius: 25}}
+          source={{
+            uri: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+          }}
         />
-        <Text style={{marginLeft: 10}}>{item.name}</Text>
+        <Text style={{marginLeft: 30, color: '#FFF'}}>{item.name}</Text>
       </TouchableOpacity>
     );
   };
 
-  return <FlatList data={personagens} renderItem={this._renderItem} />;
+  return (
+    <ImageBackground
+      source={require('../Image/marvel.jpeg')}
+      style={{width: '100%', height: '100%'}}>
+      <FlatList data={arrayPersonagens} renderItem={_renderItem} />
+    </ImageBackground>
+  );
 };
-export class DescriptionScreen extends Component {
-  render() {
-    return <ComponenteDescription />;
-  }
-}
+export const DetailScreen = ({navigation}) => {
+  return (
+    <View>
+      <ImageBackground
+        source={require('../Image/marvel.jpeg')}
+        style={{width: '100%', height: '100%'}}
+      />
+    </View>
+  );
+};
 
 //https://gist.github.com/relferreira/a68fa3efe84567472776a564ec1a0123
 //https://github.com/ecavalcanti/RNMarvel/blob/master/src/screens/Home.js#L29

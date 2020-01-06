@@ -40,7 +40,8 @@
     "redux-devtools-extension": "2.13.8",
     "redux-multi": "^0.1.12",
     "redux-persist": "^6.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "rnpm": "^1.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
