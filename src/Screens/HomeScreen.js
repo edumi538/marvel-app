@@ -1,17 +1,13 @@
-import React, {Component, useEffect} from 'react';
+import React, {useEffect} from 'react';
+import {AuthApi} from '../Actions/screenActions/HomeTItleAction';
 import {
-  View,
-  Text,
-  FlatList,
   TouchableOpacity,
   Image,
+  Text,
   ImageBackground,
-  Button,
+  FlatList,
 } from 'react-native';
-import {StackActions} from '@react-navigation/routers';
 import {useDispatch, useSelector} from 'react-redux';
-import {AuthApi} from '../Actions/screenActions/HomeTItleAction';
-
 export const HomeScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const arrayPersonagens = useSelector(state => state.HomeReducer.chars);
@@ -48,16 +44,3 @@ export const HomeScreen = ({navigation}) => {
     </ImageBackground>
   );
 };
-export const DetailScreen = ({navigation}) => {
-  return (
-    <View>
-      <ImageBackground
-        source={require('../Image/marvel.jpeg')}
-        style={{width: '100%', height: '100%'}}
-      />
-    </View>
-  );
-};
-
-//https://gist.github.com/relferreira/a68fa3efe84567472776a564ec1a0123
-//https://github.com/ecavalcanti/RNMarvel/blob/master/src/screens/Home.js#L29

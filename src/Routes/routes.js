@@ -1,7 +1,8 @@
 import React from 'react';
 import {createStackNavigator, HeaderTitle} from '@react-navigation/stack';
 import {Button} from 'react-native';
-import {HomeScreen, Description, DetailScreen} from '../Screen/screens';
+import {HomeScreen} from '../Screens/HomeScreen';
+import {DetailScreen} from '../Screens/DetailScreen';
 import {NavigationNativeContainer} from '@react-navigation/native';
 
 export default function() {

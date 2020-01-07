@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 import {PersistGate} from 'redux-persist/integration/react';
 import {Provider, useSelector} from 'react-redux';
-import {AuthScreen} from './src/Screen/screens';
 import {store, persistor} from './src/Store/index';
 import Routes from './src/Routes/routes';
 // import {store} from './src/Actions/screenActions/HomeTItleAction';
