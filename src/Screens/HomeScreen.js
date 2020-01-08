@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {AuthApi} from '../Actions/screenActions/HomeTItleAction';
+import {ConsumeApiPersonagens} from '../Actions/screenActions/GetPersonagensAction';
 import {
   TouchableOpacity,
   Image,
@@ -8,13 +8,16 @@ import {
   FlatList,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+
 export const HomeScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const arrayPersonagens = useSelector(state => state.HomeReducer.chars);
+  let pagina_inicial = 10;
+  console.tron.log(arrayPersonagens);
 
   useEffect(() => {
-    dispatch(AuthApi());
-  }, [dispatch]);
+    dispatch(ConsumeApiPersonagens(pagina_inicial));
+  }, [dispatch, pagina_inicial]);
 
   const _renderItem = ({item}) => {
     return (
@@ -40,7 +43,12 @@ export const HomeScreen = ({navigation}) => {
     <ImageBackground
       source={require('../Image/marvel.jpeg')}
       style={{width: '100%', height: '100%'}}>
-      <FlatList data={arrayPersonagens} renderItem={_renderItem} />
+      <FlatList
+        onEndReached={''}
+        onEndReachedThreshold={0.1}
+        data={arrayPersonagens}
+        renderItem={_renderItem}
+      />
     </ImageBackground>
   );
 };

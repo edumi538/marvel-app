@@ -18,10 +18,11 @@ const timestamp = Number(new Date());
 const hash = md5.create();
 hash.update(timestamp + PRIVATE_KEY + PUBLIC_KEY);
 
-export const AuthApi = () => async dispatch => {
+export const ConsumeApiPersonagens = offset => async dispatch => {
+  console.tron.log(offset);
   try {
     const response = await Axios.get(
-      `https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`,
+      `https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&limit=10&offset=${offset}&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`,
     );
 
     if (response.status !== 200) {
