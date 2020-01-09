@@ -3,7 +3,7 @@ import {createStore} from 'redux';
 import {createAction} from 'redux-actions';
 import {store} from '../../Store/index';
 import {
-  PERSON_ON_FETCHING,
+  PERSON_ON_REQUEST,
   PERSON_ON_SUCCESS,
   PERSON_ON_FAILED,
 } from '../../Types/ActionTypes';
@@ -18,28 +18,30 @@ const timestamp = Number(new Date());
 const hash = md5.create();
 hash.update(timestamp + PRIVATE_KEY + PUBLIC_KEY);
 
-export const ConsumeApiPersonagens = offset => async dispatch => {
-  console.tron.log(offset);
-  try {
-    const response = await Axios.get(
-      `https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&limit=10&offset=${offset}&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`,
-    );
+export const ConsumeApiPersonagens = page => async dispatch => {
+  dispatch(ApiRequest(page));
+  await Axios.get(
+    `https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&limit=10&offset=${page}&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`,
+  )
+    .then(response => dispatch(ApiSuccess(response)))
+    .catch(error => dispatch(ApiFailure(error)));
+};
+export const ApiRequest = page => {
+  return {
+    type: PERSON_ON_REQUEST,
+    page: page + 10,
+  };
+};
 
-    if (response.status !== 200) {
-      dispatch({
-        type: PERSON_ON_FETCHING,
-      });
-    }
-    dispatch({
-      type: PERSON_ON_SUCCESS,
-      payload: response.data.data.results,
-    });
-  } catch (error) {
-    Alert.alert('Error', 'Houve um erro que impediu o consumo dos dados');
-    dispatch({
-      type: PERSON_ON_SUCCESS,
-      payload: [],
-    });
-  }
-  // console.tron.log(getState());
+export const ApiSuccess = response => {
+  return {
+    type: PERSON_ON_SUCCESS,
+    payload: response.data.data.results,
+  };
+};
+export const ApiFailure = error => {
+  return {
+    type: PERSON_ON_FAILED,
+    error: error,
+  };
 };

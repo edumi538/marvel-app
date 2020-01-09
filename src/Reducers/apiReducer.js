@@ -1,16 +1,18 @@
-import {PERSON_ON_FETCHING, PERSON_ON_SUCCESS} from '../Types/ActionTypes';
+import {PERSON_ON_REQUEST, PERSON_ON_SUCCESS} from '../Types/ActionTypes';
 
 const INITIAL_STATE = {
   chars: [],
   fetching: false,
+  page: 1,
 };
 
 export default function Api(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case PERSON_ON_FETCHING:
+    case PERSON_ON_REQUEST:
       return {
         ...state,
         fetching: true,
+        page: action.page,
       };
     case PERSON_ON_SUCCESS:
       return {

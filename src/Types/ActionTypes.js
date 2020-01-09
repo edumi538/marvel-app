@@ -1,3 +1,3 @@
 // Consume Api
-export const PERSON_ON_FETCHING = 'PERSON_ON_FETCHING';
+export const PERSON_ON_REQUEST = 'PERSON_ON_REQUEST';
 export const PERSON_ON_SUCCESS = 'PERSON_ON_SUCCESS';
