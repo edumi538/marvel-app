@@ -11,14 +11,15 @@ import {useDispatch, useSelector} from 'react-redux';
 export const HomeScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const arrayPersonagens = useSelector(state => state.HomeReducer.chars);
-  console.tron.log(arrayPersonagens);
+  const pageUp = useSelector(state => state.HomeReducer.page);
 
   useEffect(() => {
-    dispatch(ConsumeApiPersonagens(1));
-  }, [dispatch]);
+    console.log(pageUp);
+    dispatch(ConsumeApiPersonagens(pageUp));
+  }, [dispatch, pageUp]);
 
   // const testeOnEndReached = () => {
-  //   dispatch(ConsumeApiPersonagens(pageTest));
+  //   dispatch(ConsumeApiPer'sonagens(pageTest));
   // };
 
   const _renderItem = ({item}) => {
@@ -47,7 +48,7 @@ export const HomeScreen = ({navigation}) => {
       style={{width: '100%', height: '100%'}}>
       <FlatList
         // onEndReached={testeOnEndReached}
-        // onEndReachedThreshold={0.5}
+        // onEndReachedThreshold={0.1}
         data={arrayPersonagens}
         renderItem={_renderItem}
       />

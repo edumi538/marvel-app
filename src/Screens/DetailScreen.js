@@ -25,7 +25,7 @@ export const DetailScreen = ({route, navigation}) => {
             image={{
               uri: `${heroes.thumbnail.path}.${heroes.thumbnail.extension}`,
             }}
-            imageStyle={{width: '100%', height: 350}}
+            imageStyle={{width: '100%', height: 400}}
             containerStyle={{backgroundColor: '#1e2c3b'}}
             titleStyle={{
               fontFamily: 'AmericanCaptain-MdEY',

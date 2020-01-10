@@ -6,6 +6,7 @@ import {
   PERSON_ON_REQUEST,
   PERSON_ON_SUCCESS,
   PERSON_ON_FAILED,
+  PERSON_ON_PAGE,
 } from '../../Types/ActionTypes';
 import Axios from 'axios';
 import md5 from 'js-md5';
@@ -21,15 +22,15 @@ hash.update(timestamp + PRIVATE_KEY + PUBLIC_KEY);
 export const ConsumeApiPersonagens = page => async dispatch => {
   dispatch(ApiRequest(page));
   await Axios.get(
-    `https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&limit=10&offset=${page}&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`,
+    `https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&limit=7&offset=${page}&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`,
   )
     .then(response => dispatch(ApiSuccess(response)))
     .catch(error => dispatch(ApiFailure(error)));
 };
 export const ApiRequest = page => {
   return {
-    type: PERSON_ON_REQUEST,
-    page: page + 10,
+    type: PERSON_ON_PAGE,
+    page: page,
   };
 };
 
