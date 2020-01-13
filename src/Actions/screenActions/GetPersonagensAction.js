@@ -22,7 +22,7 @@ hash.update(timestamp + PRIVATE_KEY + PUBLIC_KEY);
 export const ConsumeApiPersonagens = page => async dispatch => {
   dispatch(ApiRequest(page));
   await Axios.get(
-    `https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&limit=7&offset=${page}&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`,
+    `https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&limit=20&offset=${page}&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`,
   )
     .then(response => dispatch(ApiSuccess(response)))
     .catch(error => dispatch(ApiFailure(error)));

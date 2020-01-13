@@ -5,10 +5,10 @@ import AsyncStorage from '@react-native-community/async-storage';
 let tron;
 
 if (__DEV__) {
-  tron = Reactotron.setAsyncStorageHandler(AsyncStorage)
-    .configure({
-      name: 'Marvel App',
-    })
+  tron = Reactotron.configure({
+    host: '192.168.86.101',
+    name: 'Marvel App',
+  })
     .useReactNative()
     .use(reactotronRedux())
     .connect();
