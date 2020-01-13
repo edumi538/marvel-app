@@ -11,7 +11,7 @@ if (__DEV__) {
     // host: '192.168.200.15',
     // host: '192.168.10.245',
     // host: '192.168.42.141',
-    host: '192.168.10.139', // Miranda
+    host: '192.168.10.229', // Miranda
     name: 'Marvel App',
   })
     .useReactNative()

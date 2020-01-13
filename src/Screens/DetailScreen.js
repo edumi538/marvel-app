@@ -6,6 +6,7 @@ import {
   ImageBackground,
   Text,
   Picker,
+  Button,
 } from 'react-native';
 import {Separator} from 'native-base';
 import {Card, Divider} from 'react-native-elements';
@@ -13,7 +14,10 @@ import {ListCollapseSeries} from '../Components/CollapseListSeries';
 import {ListCollapseQuadrinhos} from '../Components/CollapseListQuadrinhos';
 export const DetailScreen = ({route, navigation}) => {
   const {heroes} = route.params;
-  console.tron.log(heroes);
+
+  const navigateToUpdateScreen = () => {
+    navigation.navigate('UpdateScreen', {update: heroes});
+  };
   return (
     <ScrollView>
       <SafeAreaView contentInsetAdjustmentBehavior="automatic">
@@ -43,6 +47,11 @@ export const DetailScreen = ({route, navigation}) => {
             <Divider style={{marginTop: 10, marginBottom: 10}} />
             <ListCollapseSeries heroes={heroes} />
             <ListCollapseQuadrinhos heroes={heroes} />
+            <Divider style={{marginTop: 10, marginBottom: 10}} />
+            <Button
+              title="Alterar dados"
+              onPress={() => navigateToUpdateScreen()}
+            />
           </Card>
         </ImageBackground>
       </SafeAreaView>

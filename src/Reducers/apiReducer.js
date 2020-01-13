@@ -2,12 +2,14 @@ import {
   PERSON_ON_PAGE,
   PERSON_ON_FAILED,
   PERSON_ON_SUCCESS,
+  PERSON_ON_LOADING_PAGE,
 } from '../Types/ActionTypes';
 
 const INITIAL_STATE = {
   chars: [],
   page: 1,
   fetching: false,
+  loadingMore: true,
 };
 
 export default function Api(state = INITIAL_STATE, action) {
@@ -17,6 +19,11 @@ export default function Api(state = INITIAL_STATE, action) {
         ...state,
         fetching: false,
         chars: action.payload,
+      };
+    case PERSON_ON_LOADING_PAGE:
+      return {
+        ...state,
+        loadingMore: action.loadingMore,
       };
     case PERSON_ON_PAGE:
       return {

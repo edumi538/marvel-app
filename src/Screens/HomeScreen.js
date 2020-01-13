@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, createRef} from 'react';
 import {ConsumeApiPersonagens} from '../Actions/screenActions/GetPersonagensAction';
 import {
   TouchableOpacity,
@@ -6,29 +6,30 @@ import {
   Text,
   ImageBackground,
   FlatList,
+  ActivityIndicator,
+  RefreshControl,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import {View} from 'native-base';
+import {colors} from 'react-native-elements';
+
 export const HomeScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const arrayPersonagens = useSelector(state => state.HomeReducer.chars);
   const page = useSelector(state => state.HomeReducer.page);
-
-  // useEffect(() => {
-  //   console.log(page);
-  //   dispatch(ConsumeApiPersonagens(1));
-  // }, [dispatch, page]);
+  const flatList = createRef();
 
   const onPageDown = () => {
-    dispatch(ConsumeApiPersonagens(page + 3));
-    console.log('PageDown:' + page);
+    dispatch(ConsumeApiPersonagens(page + 6));
+    console.tron.log('PageDown:' + page);
   };
 
-  // const onPageUp = () => {
-  //   if (page >= 3) {
-  //     dispatch(ConsumeApiPersonagens(page - 3));
-  //     console.log('PageUp:' + page);
-  //   }
-  // };
+  const onPageUp = () => {
+    if (page >= 6) {
+      dispatch(ConsumeApiPersonagens(page - 6));
+      console.tron.log('PageUp:' + page);
+    }
+  };
 
   const _renderItem = ({item}) => {
     return (
@@ -56,13 +57,13 @@ export const HomeScreen = ({navigation}) => {
       style={{width: '100%', height: '100%'}}>
       <FlatList
         onScroll={({nativeEvent}) => {
-          if (nativeEvent.contentInset.y === 0) {
+          if (nativeEvent.contentOffset.y === 1196.5714111328125) {
             onPageDown();
+          } else if (nativeEvent.contentOffset.y === 0) {
+            onPageUp();
+            // flatList.current.scrollToEnd();
           }
         }}
-        // onEndReached={onPageDown}
-        // onEndReachedThreshold={0.1}
-        initialNumToRender={page}
         data={arrayPersonagens}
         renderItem={_renderItem}
       />
