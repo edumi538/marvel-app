@@ -1,5 +1,8 @@
 import React, {useEffect, createRef} from 'react';
-import {ConsumeApiPersonagens} from '../Actions/screenActions/GetPersonagensAction';
+import {
+  ConsumeApiPersonagens,
+  Reset,
+} from '../Actions/screenActions/GetPersonagenApiAction';
 import {
   TouchableOpacity,
   Image,
@@ -20,15 +23,8 @@ export const HomeScreen = ({navigation}) => {
   const flatList = createRef();
 
   const onPageDown = () => {
-    dispatch(ConsumeApiPersonagens(page + 6));
+    dispatch(ConsumeApiPersonagens(page + 20));
     console.tron.log('PageDown:' + page);
-  };
-
-  const onPageUp = () => {
-    if (page >= 6) {
-      dispatch(ConsumeApiPersonagens(page - 6));
-      console.tron.log('PageUp:' + page);
-    }
   };
 
   const _renderItem = ({item}) => {
@@ -56,14 +52,8 @@ export const HomeScreen = ({navigation}) => {
       source={require('../Image/marvel.jpeg')}
       style={{width: '100%', height: '100%'}}>
       <FlatList
-        onScroll={({nativeEvent}) => {
-          if (nativeEvent.contentOffset.y === 1196.5714111328125) {
-            onPageDown();
-          } else if (nativeEvent.contentOffset.y === 0) {
-            onPageUp();
-            // flatList.current.scrollToEnd();
-          }
-        }}
+        onEndReached={onPageDown}
+        onEndReachedThreshold={0.1}
         data={arrayPersonagens}
         renderItem={_renderItem}
       />
