@@ -3,7 +3,6 @@ import {Button, TextInput, View} from 'react-native';
 import {Formik} from 'formik';
 import {useSelector, useDispatch} from 'react-redux';
 import {UpdateSuccess} from '../Actions/screenActions/UpdateDataAction';
-import {} from 'react-redux';
 export const FormUpdate = ({personagem}) => {
   const dispatch = useDispatch();
   const personagens = useSelector(state => state.HomeReducer.chars);
@@ -19,8 +18,14 @@ export const FormUpdate = ({personagem}) => {
       name: values.name,
       description: values.description,
     };
-    const teste = [...personagens, heroi];
-    dispatch(UpdateSuccess(teste));
+    const arrayFilter = personagens.map(item => {
+      if (item.id === personagem.id) {
+        return heroi;
+      } else {
+        return item;
+      }
+    });
+    console.tron.log('arr', arrayFilter);
   }
 
   return (

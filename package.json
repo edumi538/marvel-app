@@ -23,6 +23,7 @@
     "firebase": "^7.6.1",
     "formik": "^2.1.1",
     "js-md5": "^0.7.3",
+    "lodash": "^4.17.15",
     "native-base": "^2.13.8",
     "react": "16.9.0",
     "react-native": "0.61.5",

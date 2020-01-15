@@ -6,6 +6,7 @@ import {
   PERSON_ON_LOADING_PAGE,
   ON_INFINITE_SCROLL,
   SET_TO_RESET_LIST,
+  ON_SEARCH_DATA,
 } from '../../Types/ActionTypes';
 import Axios from 'axios';
 import md5 from 'js-md5';
@@ -28,9 +29,12 @@ export const ConsumeApiPersonagens = page => async (dispatch, getState) => {
       const {data} = response.data;
       const results = data.results;
       const personagens = getState().HomeReducer.chars;
-      const arrayFinal = [...personagens, ...results];
-      dispatch(ApiSuccess(arrayFinal));
-      console.tron.log(arrayFinal);
+      if (personagens.length <= 0) {
+        dispatch(ApiSuccess(results));
+      } else {
+        const arrayFinal = [...personagens, ...results];
+        dispatch(ApiSuccess(arrayFinal));
+      }
       setTimeout(() => dispatch(LoadingOnPageSuccess(false)), 700);
     })
     .catch(error => dispatch(ApiFailure(error)));
@@ -66,9 +70,8 @@ export const LoadingOnPageSuccess = loading => {
     payload: loading,
   };
 };
-export const ResetList = value => {
+export const ResetList = () => {
   return {
     type: SET_TO_RESET_LIST,
-    payload: value,
   };
 };

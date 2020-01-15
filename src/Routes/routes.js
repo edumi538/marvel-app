@@ -7,7 +7,7 @@ import {UpdateScreen} from '../Screens/UpdateScreen';
 import {NavigationNativeContainer} from '@react-navigation/native';
 import {LoadingRender} from '../Components/LoadingRender';
 import {useSelector} from 'react-redux';
-
+import {Searchbar} from '../Components/SearchBar';
 export default function() {
   const loadingMore = useSelector(state => state.HomeReducer.loadingMore);
   const Stack = createStackNavigator();

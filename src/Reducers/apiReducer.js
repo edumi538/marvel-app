@@ -5,6 +5,7 @@ import {
   PERSON_ON_LOADING_PAGE,
   UPDATE_ON_SUCCESS,
   SET_TO_RESET_LIST,
+  ON_SEARCH_DATA,
 } from '../Types/ActionTypes';
 
 const INITIAL_STATE = {
@@ -43,7 +44,7 @@ export default function Api(state = INITIAL_STATE, action) {
     case SET_TO_RESET_LIST:
       return {
         ...state,
-        chars: action.payload,
+        chars: [],
       };
     default:
       return state;
