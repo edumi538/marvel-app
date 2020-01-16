@@ -1,9 +1,10 @@
 import React, {useEffect, createRef, useState} from 'react';
 import {Searchbar} from '../Components/SearchBar';
 import {
-  ConsumeApiPersonagens,
+  ConsumeApiInit,
   ResetList,
 } from '../Actions/screenActions/GetPersonagenApiAction';
+import {ConcatData} from '../Actions/screenActions/ListaConcatAction';
 import {
   TouchableOpacity,
   Image,
@@ -24,13 +25,15 @@ export const HomeScreen = ({navigation}) => {
   const flatList = createRef();
 
   useEffect(() => {
-    dispatch(ResetList());
-    dispatch(ConsumeApiPersonagens(onScreenInit));
+    dispatch(ConsumeApiInit());
     console.tron.log('renderizei');
+    return () => {
+      dispatch(ResetList());
+    };
   }, []);
 
   const onPageDown = () => {
-    dispatch(ConsumeApiPersonagens(page + 20));
+    dispatch(ConcatData(page + 20));
   };
 
   const _renderItem = ({item}) => {

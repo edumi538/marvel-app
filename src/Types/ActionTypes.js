@@ -12,3 +12,5 @@ export const ON_INFINITE_SCROLL = 'ON_INFINITE_SCROLL';
 export const SET_TO_RESET_LIST = 'SET_TO_RESET_LIST';
 //SerchData
 export const ON_SEARCH_DATA = 'ON_SEARCH_DATA';
+//ConcatData
+export const ON_CONCAT_DATA = 'ON_CONCAT_DATA';

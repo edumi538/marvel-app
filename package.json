@@ -48,7 +48,8 @@
     "redux-multi": "^0.1.12",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
-    "rnpm": "^1.9.0"
+    "rnpm": "^1.9.0",
+    "yup": "^0.28.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",

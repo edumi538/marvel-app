@@ -6,6 +6,7 @@ import {
   UPDATE_ON_SUCCESS,
   SET_TO_RESET_LIST,
   ON_SEARCH_DATA,
+  ON_CONCAT_DATA,
 } from '../Types/ActionTypes';
 
 const INITIAL_STATE = {
@@ -45,6 +46,11 @@ export default function Api(state = INITIAL_STATE, action) {
       return {
         ...state,
         chars: [],
+      };
+    case ON_CONCAT_DATA:
+      return {
+        ...state,
+        chars: action.payload,
       };
     default:
       return state;

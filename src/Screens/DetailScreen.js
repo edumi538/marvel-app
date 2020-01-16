@@ -50,6 +50,7 @@ export const DetailScreen = ({route, navigation}) => {
             <Divider style={{marginTop: 10, marginBottom: 10}} />
             <Button
               title="Alterar dados"
+              color="red"
               onPress={() => navigateToUpdateScreen()}
             />
           </Card>
