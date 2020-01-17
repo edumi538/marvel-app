@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, TextInput, View, Alert, Text} from 'react-native';
 import {Input, Label, Content, Item} from 'native-base';
 import {Card} from 'react-native-elements';
@@ -19,6 +19,7 @@ const UpdateSchema = Yup.object().shape({
 });
 
 export const FormUpdate = ({personagem}) => {
+  const [Alerta, SetAlerta] = useState(false);
   const dispatch = useDispatch();
   const personagens = useSelector(state => state.HomeReducer.chars);
 
@@ -41,6 +42,7 @@ export const FormUpdate = ({personagem}) => {
       }
     });
     dispatch(SaveUpdateData(arrayFilter));
+    Alert.alert('Sucesso', 'Seu Personagem foi atualizado com sucesso!');
   }
 
   return (

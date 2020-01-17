@@ -15,7 +15,6 @@ export default function() {
     <NavigationNativeContainer>
       <Stack.Navigator
         screenOptions={{
-          title: 'Marvel APP',
           headerTitleStyle: {
             fontFamily: 'AmericanCaptain-MdEY',
             // fontWeight: '',
@@ -27,9 +26,29 @@ export default function() {
           headerRight: () => <LoadingRender loading={loadingMore} />,
         }}
         initialRouteName="HomeScreen">
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
-        <Stack.Screen name="DetailScreen" component={DetailScreen} />
-        <Stack.Screen name="UpdateScreen" component={UpdateScreen} />
+        <Stack.Screen
+          options={{
+            title: 'Marvel App\t\t\t\t\t\t\t\t\t\t\t\t\tPersonagens',
+          }}
+          name="HomeScreen"
+          component={HomeScreen}
+        />
+        <Stack.Screen
+          name="DetailScreen"
+          options={{
+            title:
+              'Marvel App\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tDetalhes',
+          }}
+          component={DetailScreen}
+        />
+        <Stack.Screen
+          name="UpdateScreen"
+          options={{
+            title:
+              'Marvel App\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAtualizar dados',
+          }}
+          component={UpdateScreen}
+        />
       </Stack.Navigator>
     </NavigationNativeContainer>
   );

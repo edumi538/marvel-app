@@ -8,7 +8,7 @@ export const LoadingRender = ({loading}) => {
   return (
     <ActivityIndicator
       animating
-      size="small"
+      size="large"
       color="#FFF"
       style={{paddingRight: 10}}
     />

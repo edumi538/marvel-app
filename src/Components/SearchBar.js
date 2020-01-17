@@ -13,7 +13,7 @@ export const Searchbar = ({setTextFilter}) => {
     <SearchBar
       containerStyle={{width: '100%', height: 45}}
       inputContainerStyle={{height: 1}}
-      placeholder="Busca por série"
+      placeholder="Busca por nome"
       lightTheme
       round
       onChangeText={value => {
