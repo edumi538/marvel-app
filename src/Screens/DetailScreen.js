@@ -7,12 +7,16 @@ import {
   Text,
   Picker,
   Button,
+  YellowBox,
 } from 'react-native';
 import {Separator} from 'native-base';
 import {Card, Divider} from 'react-native-elements';
 import {ListCollapseSeries} from '../Components/CollapseListSeries';
 import {ListCollapseQuadrinhos} from '../Components/CollapseListQuadrinhos';
 export const DetailScreen = ({route, navigation}) => {
+  YellowBox.ignoreWarnings([
+    'Warning: Each child in a list should have a unique "key" prop',
+  ]);
   const {heroes} = route.params;
 
   const navigateToUpdateScreen = () => {

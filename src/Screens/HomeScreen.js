@@ -13,10 +13,14 @@ import {
   FlatList,
   ActivityIndicator,
   RefreshControl,
+  YellowBox,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
 export const HomeScreen = ({navigation}) => {
+  YellowBox.ignoreWarnings([
+    'Warning: Failed child context type: Invalid child context',
+  ]);
   const [search, setSearch] = useState(null);
   const [onScreenInit, setOnScreenInit] = useState(1);
   const dispatch = useDispatch();
