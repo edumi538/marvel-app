@@ -2,14 +2,14 @@
 ## App de consumo da API da marvel
 #### - **Objetivo**: Consumir a API Pública da Marvel, utilizando as melhores tecnologías do mercado.
 #### - **Tecnologías utilizadas:** 
-#### - _Hooks
-#### - Redux
-#### - Redux Thunk
-#### - Formik
-#### - Reactotron
-#### - React Navigation (v5.0)
-#### - Axios
-#### - Prettier
-#### - Eslint_
+#### - _Hooks_
+#### - _Redux_
+#### - _Redux Thunk_
+#### - _Formik_
+#### - _Reactotron_
+#### - _React Navigation (v5.0)_
+#### - _Axios_
+#### - _Prettier_
+#### - _Eslint_
 
-### Base: React Native / React Redux
+### **Base**: React Native / React Redux
