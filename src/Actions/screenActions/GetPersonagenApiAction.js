@@ -1,17 +1,12 @@
 import {
-  PERSON_ON_REQUEST,
   PERSON_ON_SUCCESS,
   PERSON_ON_FAILED,
-  PERSON_ON_PAGE,
   PERSON_ON_LOADING_PAGE,
-  ON_INFINITE_SCROLL,
   SET_TO_RESET_LIST,
-  ON_SEARCH_DATA,
 } from '../../Types/ActionTypes';
 import Api from '../../Requests/charactersApi';
 import React, {useState} from 'react';
 export const ConsumeApiInit = () => dispatch => {
-  dispatch(ApiRequest(1));
   Api(1)
     .then(response => {
       const {data} = response.data;
@@ -19,13 +14,6 @@ export const ConsumeApiInit = () => dispatch => {
       dispatch(ApiSuccess(results));
     })
     .catch(error => dispatch(ApiFailure(error)));
-};
-
-export const ApiRequest = page => {
-  return {
-    type: PERSON_ON_PAGE,
-    payload: page,
-  };
 };
 
 export const ApiSuccess = response => {

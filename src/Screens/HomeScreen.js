@@ -67,7 +67,7 @@ export const HomeScreen = ({navigation}) => {
         source={require('../Image/marvel.jpeg')}
         style={{width: '100%', height: '100%'}}>
         <FlatList
-          onEndReached={onPageDown}
+          onEndReached={search ? null : onPageDown}
           onEndReachedThreshold={0.1}
           data={
             search

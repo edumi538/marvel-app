@@ -3,6 +3,7 @@ import {
   PERSON_ON_FAILED,
   PERSON_ON_SUCCESS,
   PERSON_ON_LOADING_PAGE,
+  PERSON_ON_PAGE_DOWN,
   UPDATE_ON_SUCCESS,
   SET_TO_RESET_LIST,
   ON_SEARCH_DATA,
@@ -27,10 +28,10 @@ export default function Api(state = INITIAL_STATE, action) {
         ...state,
         loadingMore: action.payload,
       };
-    case PERSON_ON_PAGE:
+    case PERSON_ON_PAGE_DOWN:
       return {
         ...state,
-        page: action.payload,
+        page: 20,
       };
     case UPDATE_ON_SUCCESS:
       return {
