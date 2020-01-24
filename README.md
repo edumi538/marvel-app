@@ -1,7 +1,7 @@
 # MARVEL APP 
 ## App de consumo da API da marvel
-#### - **Objetivo**: Consumir a API Pública da Marvel, utilizando as melhores tecnologías do mercado.
-#### - **Tecnologías utilizadas:** 
+#### - __Objetivo__: Consumir a API Pública da Marvel, utilizando as melhores tecnologías do mercado.
+#### - __Tecnologías utilizadas:__ 
 #### - _Hooks_
 #### - _Redux_
 #### - _Redux Thunk_
@@ -12,4 +12,4 @@
 #### - _Prettier_
 #### - _Eslint_
 
-### **Base**: React Native / React Redux
+### __Base__: React Native / React Redux
