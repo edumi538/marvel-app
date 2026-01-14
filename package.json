@@ -26,7 +26,7 @@
     "lodash": "^4.17.15",
     "native-base": "^2.13.8",
     "react": "16.9.0",
-    "react-native": "0.61.5",
+    "react-native": "0.82.1",
     "react-native-collapse-view": "^1.0.0",
     "react-native-elements": "^1.2.7",
     "react-native-gesture-handler": "^1.5.2",
